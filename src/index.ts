@@ -27,6 +27,7 @@ function callApi({
     data = {},
     options = {},
     prefix = 'api/',
+    contentType = 'json'
 }) {
     if (!url) {
         const error = new Error('请传入 url')
@@ -42,6 +43,20 @@ function callApi({
     }
 
     const newOptions = { ...defaultOptions, ...options }
+    if (contentType === 'urlencoded') {
+        newOptions.headers = {
+            ...newOptions.headers,
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+
+        }
+    } else {
+        newOptions.headers = {
+            ...newOptions.headers,
+            Accept: 'application/json',
+            'Content-Type': 'application/json; charset=utf-8',
+
+        }
+    }
     const { method } = newOptions
     if (['get', 'head'].indexOf(method) === -1) {
         newOptions.data = data
@@ -65,23 +80,23 @@ function callApi({
     })
 }
 const restful = {
-    get(url, params, options) {
+    get(url, params, options, contentType) {
         return callApi({
-            url, options: { params, method: 'get', ...options },
+            url, options: { params, method: 'get', ...options }, contentType
         })
     },
 
-    post(url, data, options) {
-        return callApi({ url, data, options: { method: 'post', ...options } })
+    post(url, data, options, contentType) {
+        return callApi({ url, data, options: { method: 'post', ...options }, contentType })
     },
-    put(url, data, options) {
-        return callApi({ url, data, options: { method: 'put', ...options } })
+    put(url, data, options, contentType) {
+        return callApi({ url, data, options: { method: 'put', ...options }, contentType })
     },
-    delete(url, data, options) {
-        return callApi({ url, data, options: { method: 'delete', ...options } })
+    delete(url, data, options, contentType) {
+        return callApi({ url, data, options: { method: 'delete', ...options }, contentType })
     },
-    patch(url, data, options) {
-        return callApi({ url, data, options: { method: 'patch', ...options } })
+    patch(url, data, options, contentType) {
+        return callApi({ url, data, options: { method: 'patch', ...options }, contentType })
     },
 }
 
