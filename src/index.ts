@@ -11,6 +11,7 @@ const defaultOptions = {
     headers: {
         // headers 的键是不区分大小写的
         Accept: 'application/json',
+        //'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
         'Content-Type': 'application/json; charset=utf-8'
     },
 }
