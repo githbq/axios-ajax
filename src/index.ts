@@ -1,3 +1,4 @@
+import qs from 'qs'
 import axios from 'axios'
 
 // GET（SELECT）：从服务器取出资源（一项或多项）。
@@ -14,6 +15,7 @@ const defaultOptions = {
         //'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
         'Content-Type': 'application/json; charset=utf-8'
     },
+    data: null
 }
 const axiosInstance = axios.create({
     timeout: 15000, // 请求超时时间
@@ -38,7 +40,24 @@ function callApi({
         url.replace(/^\//, '')
         fullUrl = `${prefix}${url}`
     }
+
     const newOptions = { ...defaultOptions, ...options }
+    const { method } = newOptions
+    if (['get', 'head'].indexOf(method) === -1) {
+        newOptions.data = data
+        if (data instanceof FormData) {
+            (newOptions.headers as any) = {
+                'x-requested-with': 'XMLHttpRequest',
+                'cache-control': 'no-cache',
+            }
+        } else if (newOptions.headers['ContentType'].indexOf('x-www-form-urlencoded') !== -1) {
+            newOptions.data = qs.stringify(data || {})
+        }
+        // else if (newOptions.headers['ContentType'].indexOf('application/json') !== -1) {
+        //     newOptions.data = JSON.stringify(data);
+        // }
+    }
+
 
     return (axiosInstance as any)({
         url: fullUrl,
