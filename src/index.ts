@@ -26,22 +26,12 @@ function callApi({
     url,
     data = {},
     options = {},
-    prefix = 'api/',
     contentType = 'json'
 }) {
     if (!url) {
         const error = new Error('请传入 url')
         return Promise.reject(error)
     }
-
-    let fullUrl = ''
-    if (url.indexOf('http') === 0) {
-        fullUrl = url // 如果是绝对路径，则直接发请求
-    } else {
-        url.replace(/^\//, '')
-        fullUrl = `${prefix}${url}`
-    }
-
     const newOptions = { ...defaultOptions, ...options }
     if (contentType === 'urlencoded') {
         newOptions.headers = {
@@ -75,7 +65,8 @@ function callApi({
 
 
     return (axiosInstance as any)({
-        url: fullUrl,
+        url,
+        baseURL: 'api/',
         ...newOptions,
     })
 }
