@@ -14,10 +14,10 @@ npm install axios-ajax
 import {axiosInstance,restful} from 'axios-ajax' 
 // 第一个参数为url,第二个参数为原生axios options
 // 如果url以http开头则直接发送请求否则自动追回前缀 'api/'
-const response = await restful.get('http://www.com/getUser',{a:1,b:2}) // 发送 http://www.com/getUser 请求
 
-const response = await restful.post('getUser',{a:1,b:2}) // 发送 api/getUser?a=1&b=2 请求
 
+const response = await restful.get('getUser',{a:1,b:2}) // 发送GET api/getUser?a=1&b=2 请求
+const response = await restful.post('http://www.com/getUser',{a:1,b:2}) // 发送POST http://www.com/getUser 请求
 const response = await restful.put('http://www.com/api',{a:1,b:2})
 const response = await restful.delete('http://www.com/api',{a:1,b:2})
 const response = await restful.patch('http://www.com/api',{a:1,b:2})
