@@ -1,4 +1,4 @@
-import qs from 'qs'
+import * as qs from 'qs'
 import axios from 'axios'
 
 // GET（SELECT）：从服务器取出资源（一项或多项）。
