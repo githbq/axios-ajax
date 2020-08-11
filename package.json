@@ -1,6 +1,6 @@
 {
     "name": "axios-ajax",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "axios-ajax",
     "publishConfig": {
         "registry": "https://registry.npmjs.org"
@@ -30,13 +30,11 @@
     },
     "keywords": [
         "typescript",
-        "module-polierplate",
+        "restful",
         "axios-ajax"
     ],
     "author": "hubiqing",
     "repository": "https://github.com/githbq/axios-ajax.git",
-    "engines": {
-        "node": ">=8"
-    },
+    "engines": {"node": ">=8"},
     "license": "MIT"
 }
