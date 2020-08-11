@@ -1,6 +1,6 @@
 {
     "name": "axios-ajax",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "description": "axios-ajax",
     "publishConfig": {
         "registry": "https://registry.npmjs.org"

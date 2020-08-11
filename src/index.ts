@@ -23,7 +23,7 @@ function callApi({
     url,
     data = {},
     options = {},
-    prefix = 'api',
+    prefix = 'api/',
 }) {
     if (!url) {
         const error = new Error('请传入 url')
