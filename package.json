@@ -1,6 +1,6 @@
 {
     "name": "axios-ajax",
-    "version": "1.0.0",
+    "version": "0.0.4",
     "description": "axios-ajax",
     "publishConfig": {
         "registry": "https://registry.npmjs.org"
@@ -14,13 +14,14 @@
         "tsc": "npm run clear && tsc",
         "tsc:w": "npm run tsc -- -w",
         "p": "npm run tsc && npm publish",
-        "lint": "tslint \"src/**/*.ts\" --fix",
-        "precommit": "npm run lint"
+        "lint": "tslint \"src/**/*.ts\" --fix"
     },
-    "dependencies": {"tslib": "^1.13.0"},
+    "dependencies": {
+        "axios": "^0.19.2",
+        "tslib": "^1.13.0"
+    },
     "devDependencies": {
         "@types/node": "^12.12.53",
-        "husky": "^4.2.3",
         "jest": "^25.5.4",
         "rimraf": "^2.7.1",
         "ts-node": "^8.10.2",
@@ -32,11 +33,10 @@
         "module-polierplate",
         "axios-ajax"
     ],
-    "husky": {
-        "hooks": {"pre-commit": "npm run lint"}
-    },
     "author": "hubiqing",
-    "repository": "https://github.com/githbq/hbq-module-boilerplate.git",
-    "engines": {"node": ">=10"},
+    "repository": "https://github.com/githbq/axios-ajax.git",
+    "engines": {
+        "node": ">=8"
+    },
     "license": "MIT"
 }
