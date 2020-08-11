@@ -50,10 +50,10 @@ function callApi({
                 'x-requested-with': 'XMLHttpRequest',
                 'cache-control': 'no-cache',
             }
-        } else if (newOptions.headers['ContentType'].indexOf('x-www-form-urlencoded') !== -1) {
+        } else if (newOptions.headers['Content-Type'].indexOf('x-www-form-urlencoded') !== -1) {
             newOptions.data = qs.stringify(data || {})
         }
-        // else if (newOptions.headers['ContentType'].indexOf('application/json') !== -1) {
+        // else if (newOptions.headers['Content-Type'].indexOf('application/json') !== -1) {
         //     newOptions.data = JSON.stringify(data);
         // }
     }
