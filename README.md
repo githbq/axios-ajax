@@ -23,7 +23,9 @@ const response = await restful.delete('http://www.com/api',{a:1,b:2})
 const response = await restful.patch('http://www.com/api',{a:1,b:2})
 
 // axiosInstance 为axios实例对象，
-// 你可以使用 axiosInstance.interceptors.request.use 或者 axiosInstance.interceptors.response.use 
+// 你可以继续使用请求与响应拦截器：
+// axiosInstance.interceptors.request.use(requestConfig => {},error => {})
+// axiosInstance.interceptors.response.use(response => {},error=>{})
 
 ```
 ## restful 动词介绍
