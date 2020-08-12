@@ -43,7 +43,7 @@ function callApi({
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
 
         }
-    } else {
+    } else if (contentType === 'json') {
         newOptions.headers = {
             ...newOptions.headers,
             Accept: 'application/json',
