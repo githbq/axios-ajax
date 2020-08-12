@@ -9,13 +9,27 @@
 npm install axios-ajax
 ```
 
-## 测试   
+## 使用 
 ```js
-import {axiosInstance,restful} from 'axios-ajax' 
+// 内部默认axios参数
+// const defaultOptions = {
+//     method: 'get', // method:  get post delete put patch
+//     withCredentials: true, // 设置该属性可以把 cookie 信息传到后台 
+//     headers: {
+//         // headers 的键是不区分大小写的
+//         Accept: 'application/json',
+//         //'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+//         'Content-Type': 'application/json; charset=utf-8'
+//     },
+//     data: null
+// }
+
+import {axiosInstance,restful,setInstanceDefaultOptions} from 'axios-ajax' 
+// 可以使用setInstanceDefaultOptions(axiosRequestConfig)函数追加的默认参数
+
 // 第一个参数为url,第二个参数为数据，第三个参数为原生 axios requestConfig
 // 默认baseURL为" 'api/' ,可以通过第三个参数进行修改
 //restful[method](url,data,axiosRequestConfig) 
-
 const response = await restful.get('getUser',{a:1,b:2}) // 发送GET api/getUser?a=1&b=2 请求
 const response = await restful.post('http://www.com/getUser',{a:1,b:2}) // 发送POST http://www.com/getUser 请求
 const response = await restful.put('http://www.com/api',{a:1,b:2})

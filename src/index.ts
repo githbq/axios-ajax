@@ -21,6 +21,10 @@ const axiosInstance = axios.create({
     timeout: 15000, // 请求超时时间
 })
 
+let instanceDefaultOptions = {}
+const setInstanceDefaultOptions = (options) => {
+    instanceDefaultOptions = options || {}
+}
 
 function callApi({
     url,
@@ -32,7 +36,7 @@ function callApi({
         const error = new Error('请传入 url')
         return Promise.reject(error)
     }
-    const newOptions = { ...defaultOptions, ...options }
+    const newOptions = { ...defaultOptions, ...instanceDefaultOptions, ...options }
     if (contentType === 'urlencoded') {
         newOptions.headers = {
             ...newOptions.headers,
@@ -70,6 +74,7 @@ function callApi({
         ...newOptions,
     })
 }
+
 const restful = {
     get(url, params, options, contentType) {
         return callApi({
@@ -92,6 +97,7 @@ const restful = {
 }
 
 export {
+    setInstanceDefaultOptions,
     axiosInstance,
     restful
 } 
