@@ -40,7 +40,7 @@ function callApi({
     if (contentType === 'urlencoded') {
         newOptions.headers = {
             ...newOptions.headers,
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
 
         }
     } else {
