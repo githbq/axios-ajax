@@ -1,6 +1,11 @@
 import * as qs from 'qs'
 import axios from 'axios'
 
+const contentTypes = {
+    json: 'application/json; charset=utf-8',
+    urlencoded: 'application/x-www-form-urlencoded; charset=UTF-8'
+}
+
 // GET（SELECT）：从服务器取出资源（一项或多项）。
 // POST（CREATE）：在服务器新建一个资源。
 // PUT（UPDATE）：在服务器更新资源（客户端提供改变后的完整资源）。
@@ -13,7 +18,7 @@ const defaultOptions = {
         // headers 的键是不区分大小写的
         Accept: 'application/json',
         //'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
-        'Content-Type': 'application/json; charset=utf-8'
+        'Content-Type': contentTypes.json
     },
     baseURL: 'api/',
     data: null
@@ -41,14 +46,14 @@ function callApi({
     if (contentType === 'urlencoded') {
         newOptions.headers = {
             ...newOptions.headers,
-            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+            'Content-Type': contentTypes.urlencoded,
 
         }
     } else if (contentType === 'json') {
         newOptions.headers = {
             ...newOptions.headers,
             Accept: 'application/json',
-            'Content-Type': 'application/json; charset=utf-8',
+            'Content-Type': contentTypes.json,
 
         }
     }
@@ -103,5 +108,6 @@ const restful = {
 export {
     setInstanceDefaultOptions,
     axiosInstance,
-    restful
+    restful,
+    contentTypes
 } 
