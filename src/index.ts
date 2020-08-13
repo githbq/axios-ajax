@@ -15,6 +15,7 @@ const defaultOptions = {
         //'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
         'Content-Type': 'application/json; charset=utf-8'
     },
+    baseURL: 'api/',
     data: null
 }
 const axiosInstance = axios.create({
@@ -69,12 +70,16 @@ function callApi({
 
     return (axiosInstance as any)({
         url,
-        baseURL: 'api/',
         ...newOptions,
     })
 }
 
 const restful = {
+    request(config, contentType) {
+        return callApi({
+            url: config.url, options: { method: 'get', ...config }, contentType
+        })
+    },
     get(url, params, options, contentType) {
         return callApi({
             url, options: { params, method: 'get', ...options }, contentType
