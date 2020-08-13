@@ -35,7 +35,7 @@ const response = await restful.post('http://www.com/getUser',{a:1,b:2}) // 发�
 const response = await restful.put('http://www.com/api',{a:1,b:2})
 const response = await restful.delete('http://www.com/api',{a:1,b:2})
 const response = await restful.patch('http://www.com/api',{a:1,b:2})
-
+const response = await restful.request(axiosOriginReqeuestConfig)
 // axiosInstance 为axios实例对象，
 // 你可以继续使用请求与响应拦截器：
 // axiosInstance.interceptors.request.use(requestConfig => {},error => {})
